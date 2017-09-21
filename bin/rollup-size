@@ -10,9 +10,18 @@ if (!packageName) {
   fail('you must provide a package name or path!')
 }
 
+const formatBytes = bytes => `${prettyBytes(bytes)} (${bytes}B)`
+const format = ({ bytes, minified, gzipped }) => `
+  Bundled: ${formatBytes(bytes)}
+  Minified: ${formatBytes(minified)}
+  Gzipped: ${formatBytes(gzipped)}
+`
+
 rollupSize(packageName)
-  .then(bytes => {
-    const result = prettyBytes(bytes)
-    console.log(`${result} (${bytes}B)`)
+  .then(({ rollup, browserify }) => {
+    console.log(`--- Rollup ---${format(rollup)}
+
+--- Browserify ---${format(browserify)}
+    `)
   })
   .catch(fail)

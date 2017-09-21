@@ -33,6 +33,7 @@
   "author": "Johnny Hauser <johnnyhauser@gmail.com>",
   "license": "CC0-1.0",
   "dependencies": {
+    "browserify": "^14.4.0",
     "cli-fail": "^1.0.0",
     "get-package-dir": "^1.0.1",
     "gzip-size": "^4.0.0",
