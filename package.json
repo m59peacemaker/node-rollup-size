@@ -1,0 +1,46 @@
+{
+  "name": "rollup-size",
+  "version": "0.0.0",
+  "description": "Get the rollup bundle size of a module after minification and gzipping.",
+  "main": "index.js",
+  "bin": {
+    "rollup-size": "bin/rollup-size"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "rollup",
+    "size",
+    "bytes",
+    "bundle",
+    "package",
+    "module",
+    "name",
+    "path",
+    "minify",
+    "minified",
+    "uglify",
+    "uglified",
+    "gzip",
+    "gzipped",
+    "compressed"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/m59peacemaker/node-rollup-size"
+  },
+  "author": "Johnny Hauser <johnnyhauser@gmail.com>",
+  "license": "CC0-1.0",
+  "dependencies": {
+    "cli-fail": "^1.0.0",
+    "get-package-dir": "^1.0.1",
+    "gzip-size": "^4.0.0",
+    "pify": "^3.0.0",
+    "pretty-bytes": "^4.0.2",
+    "rollup": "^0.50.0",
+    "rollup-plugin-commonjs": "^8.2.1",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "uglify-es": "^3.1.1"
+  }
+}

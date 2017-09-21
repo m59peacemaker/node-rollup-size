@@ -1,0 +1,18 @@
+#!/usr/bin/env node
+
+const prettyBytes = require('pretty-bytes')
+const rollupSize = require('../')
+const fail = require('cli-fail')
+
+const packageName = process.argv.slice(2)[0]
+
+if (!packageName) {
+  fail('you must provide a package name or path!')
+}
+
+rollupSize(packageName)
+  .then(bytes => {
+    const result = prettyBytes(bytes)
+    console.log(`${result} (${bytes}B)`)
+  })
+  .catch(fail)
