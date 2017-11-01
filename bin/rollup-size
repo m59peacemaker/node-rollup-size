@@ -2,6 +2,7 @@
 
 const prettyBytes = require('pretty-bytes')
 const rollupSize = require('../')
+const browserifySize = require('../lib/browserify-size')
 const fail = require('cli-fail')
 
 const packageName = process.argv.slice(2)[0]
@@ -17,11 +18,17 @@ const format = ({ bytes, minified, gzipped }) => `
   Gzipped: ${formatBytes(gzipped)}
 `
 
-rollupSize(packageName)
-  .then(({ rollup, browserify }) => {
-    console.log(`--- Rollup ---${format(rollup)}
-
---- Browserify ---${format(browserify)}
-    `)
+Promise.all([
+  rollupSize(packageName),
+  browserifySize(packageName).catch(err => err)
+])
+  .then(([ rollup, browserify ]) => {
+    console.log(`--- Rollup ---${format(rollup)}`)
+    process.stdout.write('--- Browserify ---')
+    if (browserify instanceof Error) {
+      console.log('\n', browserify.message)
+    } else {
+      console.log(format(browserify))
+    }
   })
   .catch(fail)
