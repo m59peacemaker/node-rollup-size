@@ -1,6 +1,6 @@
 {
   "name": "rollup-size",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Get the rollup bundle size of a module after minification and gzipping.",
   "main": "index.js",
   "bin": {
